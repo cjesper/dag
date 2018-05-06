@@ -52,6 +52,10 @@ body.body-strobe {
   z-index: 10;
 }
 
+#nofriday {
+    font-size: 56px;
+}
+
 .head {
   position: absolute;
   top: 0;
@@ -60,6 +64,7 @@ body.body-strobe {
   min-width: 1100px;
   height: 100%;
   opacity: 0;
+  display: none;
   animation: fade 10s normal forwards ease-in-out;
 }
 

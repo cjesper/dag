@@ -5,22 +5,41 @@
       <link href="index.css" rel="stylesheet" />
     </header>
   <body id="body">
-      <img class="head" src="src/head.png" />
+      <img class="head" id="normal" src="src/head.png" />
       <img class="head" id="glow" src="src/head_glow.png" />
       <img id="prippan" src="src/prippan.png" />
       <div id="bild">
         <img class="image" src="./src/fredag.png">    
       </div>
+      <h1 id="nofriday" >Det är dessvärre inte fredag, vänner :( </h1>
       <img onclick="add_strobe()" id="lob_bild" src="src/lob.JPG" />
       <h3 id="counter">1</h3>
-      <a target="_blank" href="https://www.youtube.com/watch?v=K8M7fFwdM9w" id="valborg">Det börjar närma sig Valborg, mina vänner.  </a>
       <script>
+
+        var date = new Date();
+        var day = date.getDay();
+
+        console.log(day);
+        function hide_friday () {
+            var prippan = document.getElementById("prippan");
+            var head = document.getElementById("bild");
+            var glow = document.getElementById("glow");
+            prippan.style.display = "none";
+            head.style.display = "none";
+            glow.style.display = "none";
+        } 
         var audio = new Audio('src/scooter.mp3');
         var counter = 0;
         var counter_element = document.getElementById('counter');
         counter_element.innerHTML = counter;
         counter_element.style.display = "none"; 
         var toggle_strobe = true;
+
+        if (day != 5) {
+            hide_friday();
+        } else {
+        document.getElementById('normal').style.display="block";
+        document.getElementById('nofriday').style.display="none";
         setTimeout(() => {
           document.getElementById('glow').style.display = "block";
           var prippan = document.getElementById("prippan");
@@ -41,6 +60,7 @@
           }, 10000);
 
         }, 10500);
+        }
 
           function add_strobe () {
             var prippan = document.getElementById("prippan");
