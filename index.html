@@ -11,7 +11,17 @@
       <div id="bild">
         <img class="image" src="./src/fredag.png">    
       </div>
+      <div id="confirm_manual_override">
+        <h2>Är du säker?</h2>
+        <h2>Var god fyll i säkerhetsfrasen för att bekräfta</h2>
+        <h3 style="text-align: center">Säkerhetsfras : "Det är fredag, mina _KRYPTERAT_"</h3>
+        <div>
+        <input id="confirm_input" type="text"/>
+        <button onClick="trigger_override()" id="trigger_button"> <b>Bekräfta</b> </button> 
+        </div>
+      </div>
       <div id="no_friday_div">
+        <button onClick="show_override()" id="activate_button"> <b>Aktivera Manuell Fredag </b> </button> 
           <h1 id="nofriday" >Det är dessvärre inte fredag, vänner :( </h1>
           <h1 id="is_friday_in" >Som tur är infaller nästa fredag redan om </h1>
           <h1 id ="friday_time"></h1>
@@ -31,6 +41,45 @@
             prippan.style.display = "none";
             head.style.display = "none";
             glow.style.display = "none";
+        } 
+
+        function show_override () {
+          var override_div = document.getElementById("confirm_manual_override") 
+          override_div.style.display = "block"
+        } 
+
+        function trigger_override() {
+            var val = document.getElementById("confirm_input").value;
+            console.log(val);
+            if (val != "bekanta") { 
+              alert("Error: Incorrect confirmation phrase. (tip : it's 'b_k__ta')")
+            } else {
+              document.getElementById("confirm_manual_override").style.display = "none";
+              document.getElementById('normal').style.display="block";
+              document.getElementById('no_friday_div').style.display="none";
+              setTimeout(() => {
+                document.getElementById('glow').style.display = "block";
+                var prippan = document.getElementById("prippan");
+                prippan.style.display = "block";
+                prippan.classList.add("prippan-animate");
+
+                setTimeout(() => {
+                  prippan.classList.add("prippan-drink");
+                  var lob_bild = document.getElementById("lob_bild");
+                  var lob_text= document.getElementById("lob_text");
+                  lob_bild.style.display = "block";
+                  lob_text.style.display = "block";
+                  counter++;
+                  counter_element.innerHTML = counter;
+                  counter_element.style.display = "block"; 
+                  setInterval(() => {
+                      counter++;
+                      counter_element.innerHTML = counter;
+                  }, 5000);
+                }, 10000);
+
+              }, 10500);
+            }
         } 
 
         function setDay() {

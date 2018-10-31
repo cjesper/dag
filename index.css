@@ -41,6 +41,47 @@ body.body-strobe {
     animation:spin 4s linear infinite;
 }
 
+#confirm_manual_override {
+  position: absolute;
+  display: none;
+  top : 25%;
+  left : 33%;
+  width : 30%;
+  height : 25%;
+  z-index: 3;
+  background-color: white;
+}
+
+h2 {
+  text-align: center;
+}
+
+#confirm_input {
+  text-align: center;
+  position: relative;
+  left: 30%;
+}
+
+#activate_button {
+  position: relative;
+  left: 40%;
+  width: 25%;
+  height: 7%;
+  font-size: 26px;
+  background-color: orange;
+}
+
+#trigger_button {
+  position: relative;
+  display:block;
+  left: 32%;
+  width: 35%;
+  height: 15%;
+  margin-top: 1%;
+  font-size: 26px;
+  background-color: orange;
+}
+
 #lob_bild {
   position: absolute;
   top: 10px;
