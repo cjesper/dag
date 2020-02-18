@@ -18,6 +18,7 @@
   <body id="body">
       <img class="head" id="normal" src="src/head.png" />
       <img class="head" id="glow" src="src/head_glow.png" />
+      <img class="head" id="max_glow" src="src/glowier_head.png" />
       <img id="prippan" src="src/prippan.png" />
       <div id="bild">
         <img class="image" src="./src/fredag.png">    
@@ -40,11 +41,15 @@
       <img onclick="add_strobe()" id="lob_bild" src="src/lob.JPG" />
       <h3 onclick="add_strobe()" id="lob_text">Press this to party instantly</h3>
       <h3 id="counter">1</h3>
+			<button onClick="increase_hets()" id="fridayify">Fridayify</button>
+			<button onClick="decrease_hets()" id="de_fridayify">De-Fridayify</button>
       <script>
 
         var date = new Date();
         var day = date.getDay();
-
+				var beer_time = 5
+				var beer_interval;
+			
         function hide_friday () {
             var prippan = document.getElementById("prippan");
             var head = document.getElementById("bild");
@@ -61,7 +66,6 @@
 
         function trigger_override() {
             var val = document.getElementById("confirm_input").value;
-            console.log(val);
             if (val != "bekanta") { 
               alert("Error: Incorrect confirmation phrase. (tip : it's 'b_k__ta')")
             } else {
@@ -83,10 +87,10 @@
                   counter++;
                   counter_element.innerHTML = counter;
                   counter_element.style.display = "block"; 
-                  setInterval(() => {
+                  beer_interval = setInterval(() => {
                       counter++;
                       counter_element.innerHTML = counter;
-                  }, 5000);
+                  }, beer_time*1000);
                 }, 10000);
 
               }, 10500);
@@ -148,14 +152,43 @@
             setInterval(() => {
                 counter++;
                 counter_element.innerHTML = counter;
-            }, 5000);
+            }, beer_time*1000);
           }, 10000);
 
         }, 10500);
         }
 
+					function increase_hets() {
+						beer_time = 2
+						var prippan = document.getElementById("prippan")
+						var glow = document.getElementById("glow").style.display = "none"
+						var glowiest = document.getElementById("max_glow").style.display= "block"
+						prippan.classList.remove("prippan-drink");
+						prippan.classList.add("prippan-drinkfast");
+						console.log(beer_time)
+						clearInterval(beer_interval)
+						beer_interval = setInterval(() => {
+								counter++;
+								counter_element.innerHTML = counter;
+						}, 2000);
+					}
+
+					function decrease_hets() {
+						beer_time = 5
+						var prippan = document.getElementById("prippan")
+						var glow = document.getElementById("glow").style.display= "block"
+						var glowiest = document.getElementById("max_glow").style.display= "none"
+						prippan.classList.remove("prippan-drinkfast");
+						prippan.classList.add("prippan-drink");
+						console.log(beer_time)
+						clearInterval(beer_interval)
+						beer_interval = setInterval(() => {
+								counter++;
+								counter_element.innerHTML = counter;
+						}, 5000);
+					}
+
           function add_strobe () {
-            console.log("AFF");
             var prippan = document.getElementById("prippan");
             if (toggle_strobe === true) {
               var body = document.getElementById("body").classList.add("body-strobe")

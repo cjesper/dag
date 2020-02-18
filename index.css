@@ -137,6 +137,11 @@ h2 {
   display: none;
 }
 
+.head#max_glow {
+  opacity: 1;
+  display: none;
+}
+
 @keyframes fade {
   100% { opacity: 1 }
 }
@@ -147,6 +152,24 @@ h2 {
   right: 5px;
   color: yellow;
   font-size: 86px;
+}
+
+#fridayify{
+  position: absolute;
+  bottom: 20px;
+  left: 1%;
+  color: black;
+	background-color: green;
+  font-size: 43px;
+}
+
+#de_fridayify{
+  position: absolute;
+  bottom: 20px;
+  left: 12%;
+  color: black;
+	background-color: red;
+  font-size: 43px;
 }
 
 #valborg {
@@ -172,6 +195,10 @@ img#prippan.prippan-drink {
   animation: drink 5s infinite ease-in-out;
 }
 
+img#prippan.prippan-drinkfast {
+  animation: drink 2s infinite ease-in-out;
+}
+
 @keyframes slideUp {
   100% {
     transform: translateY(-376px);
@@ -179,6 +206,16 @@ img#prippan.prippan-drink {
 }
 
 @keyframes drink {
+  0%, 100% {
+    transform: translateY(-376px) rotate(0); 
+  }
+
+  50% {
+    transform: translateY(-376px) rotate(-115deg); 
+  }
+}
+
+@keyframes drinkfast {
   0%, 100% {
     transform: translateY(-376px) rotate(0); 
   }
