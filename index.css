@@ -159,6 +159,7 @@ h2 {
   bottom: 20px;
   left: 1%;
   color: black;
+	display:none;
 	background-color: green;
   font-size: 43px;
 }
@@ -168,6 +169,7 @@ h2 {
   bottom: 20px;
   left: 12%;
   color: black;
+	display:none;
 	background-color: red;
   font-size: 43px;
 }
